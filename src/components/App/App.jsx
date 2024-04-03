@@ -1,4 +1,4 @@
-import { forwardRef, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ImageGallery from "../ImageGallery/ImageGallery";
 import SearchBar from "../SearchBar/SearchBar";
 import { getImages } from "../../utils/api";
@@ -39,7 +39,7 @@ function App() {
 
   const searchImages = (newQuery) => {
     if (query !== newQuery) {
-      setQuery((oldQuery) => newQuery);
+      setQuery(newQuery);
       setPage(1);
       setImages([]);
     }
@@ -52,7 +52,7 @@ function App() {
   const openModal = (imageId) => {
     setIsModalOpen(true);
     const imageToShow = images.find((image) => imageId === image.id);
-    setModalImage((prevImage) => imageToShow);
+    setModalImage(imageToShow);
   };
 
   const closeModal = (e) => {
